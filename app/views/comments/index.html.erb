@@ -1,0 +1,9 @@
+<h1><%= @post.title %> Comments</h1>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <b></b> <%= link_to comment.title, post_comment_path(@post, comment) %> written by <%= comment.commentter %>
+    </li>
+  <% end %>
+</ul>

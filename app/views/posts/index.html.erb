@@ -1,0 +1,20 @@
+<h1>Tüm Postlar</h1>
+<table border="1">
+<tr>
+    <td>Title</td>
+    <td>Content</td>
+</tr
+
+<% @posts.each do |m| %>
+    <tr>
+         <td> <%= m.title %> </td>
+         <td> <%= m.content %> </td>
+         <td> <%= link_to "Göster", post_path(m.id) %> </td>
+         <td> <%= link_to "Düzenle", edit_post_path(m.id) %> </td>
+         <td><%= link_to 'Sil', post_path(m.id), method: :delete, data: {:confirm => 'Emin misiniz?'} %> </td>
+        
+    </tr> 
+<%end%>
+</table>
+<%=link_to "Yeni Post Kaydet",new_post_path%>
+

@@ -1,0 +1,22 @@
+<h1>Welcome My Medium</h1>
+
+<% if user_signed_in? %>
+  <%= link_to 'Çıkış Yap', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Giriş Yap', new_user_session_path %>
+<% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <% if user_signed_in? %>
+      <li>
+      
+        <%= link_to post.title, post_path(post) %> by <%= post.content %> oluşturuldu
+        <%= link_to post.user.email, profile_index_path(post.user) %>
+        
+      </li>
+    <% else %>
+      <li><%= post.title %> by <%= post.content %></li>
+    <% end %>
+  <% end %>
+</ul>

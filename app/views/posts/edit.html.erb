@@ -1,0 +1,7 @@
+<h1>Post ekle</h1>
+<%= form_for @post do |p| %>
+    Başlık <%= p.text_field :title %><br>
+    İçerik <%= p.text_field :content %><br>
+
+    <%= p.submit 'Düzenle' %>
+<% end %>

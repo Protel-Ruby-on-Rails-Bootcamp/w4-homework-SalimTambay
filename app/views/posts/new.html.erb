@@ -1,0 +1,12 @@
+
+<h1>Post ekle</h1>
+
+<%= form_for @post do |p| %>
+
+    Başlık <%= p.text_field :title %><br>
+    İçerik <%= p.text_area :content %><br>
+    İçerik <%= p.check_box :visible %><br>
+ 
+
+    <%= p.submit 'Gönder' %>
+<% end %>

@@ -1,0 +1,35 @@
+<h1>Post#show</h1>
+<%= @post.title %>
+<%= @post.content %>
+
+  <% @post.comments.each do |comment| %>
+    <p><%= comment.title %></p>
+    <p><%= comment.content %></p>
+    <hr>
+<% end %>
+
+<h4>Comments</h4>
+
+<%unless @post.user == current_user%>
+  <%= form_with model: [@post, @post.comments.build] do |form| %>
+      <p>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </p>
+      <p>
+        <%= form.label :content %>
+        <%= form.text_area :content %>
+      </p>
+
+      <p>
+        <%= form.submit %>
+      </p>
+    <% end %>
+    
+  <% end %>
+
+
+
+<%= link_to "Tümünü Göster", posts_path %>
+
+
