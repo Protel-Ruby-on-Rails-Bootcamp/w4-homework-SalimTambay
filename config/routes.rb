@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'profile/index'
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
-  get 'profile/index/:user_id', to: 'profile#index', as: 'profile'
+
   root 'welcome#index'
   devise_for :users
 
@@ -13,5 +12,10 @@ Rails.application.routes.draw do
 
   end
   
+  resources :users do
+    get :feed, on: :collection
+  end
+
+  resources :relationships, only: [:create, :destroy]
   
 end

@@ -1,0 +1,14 @@
+<h1>Your timeline</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to post.title, post_path(post) %> by <%= post.content %> added by
+          <%= link_to post.user.email, user_path(post.user) %>
+      </li>
+    <% else %>
+      <li><%= post.title %> by <%= post.content%></li>
+    <% end %>
+  <% end %>
+</ul>

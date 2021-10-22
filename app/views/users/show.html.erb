@@ -1,0 +1,18 @@
+<h1>User <%= @user.email %></h1>
+
+<div id='followers'>
+  <b>Following(<%= @user.following.count %>)</b>
+  <b>Follower(<%= @user.followers.count %>)</b>
+</div>
+
+<% if user_signed_in? && @user != current_user %>
+  <p><%= render 'follow_form' %></p>
+<% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post_path(post) %> by <%= post.content %>
+    </li>
+  <% end %>
+</ul>
